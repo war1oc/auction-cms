@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "auctions",
+  "info": {
+    "singularName": "auction",
+    "pluralName": "auctions",
+    "displayName": "Auction",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "startsAt": {
+      "type": "datetime"
+    },
+    "endsAt": {
+      "type": "datetime"
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item.item",
+      "mappedBy": "auction"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+services:
+  strapi:
+    build: .
+    command: yarn develop
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./.tmp:/opt/app/.tmp
+      - ./config:/opt/app/config
+      - ./database:/opt/app/database
+      - ./public/uploads:/opt/app/public/uploads
+      - ./src:/opt/app/src
+      - ./types:/opt/app/types
+    ports:
+      - "1337:1337"
