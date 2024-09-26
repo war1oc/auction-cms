@@ -24,6 +24,11 @@ module.exports = createCoreController('api::bid.bid', ({ strapi }) => ({
       return ctx.badRequest('The auction for this item has ended or does not exist');
     }
 
+    // Check if the auction has started
+    if (new Date(item.auction.startsAt) > new Date()) {
+      return ctx.badRequest('The auction for this item has not started yet');
+    }
+
     // Get the starting bid and minimum increment
     const startingBid = item.startingBid;
     const minIncrement = item.minIncrement;
